@@ -1,0 +1,31 @@
+from behave import *
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+import allure
+# handling notifications
+option = Options()
+option.add_argument("--disable-notifications")
+
+
+
+@given(u'user in the login page')
+def launchbrowser(context):
+    context.driver=webdriver.Chrome(executable_path="C:/Users/Raviraj/Desktop/chromedriver_win32/chromedriver.exe",chrome_options=option)
+
+
+@when(u'user enter username as "{user}" and password is "{pwd}"')
+def userdetails(context,user,pwd):
+    context.driver.get("https://www.air.irctc.co.in/")
+    context.driver.find_element(by=By.XPATH, value="//header/nav[1]/div[1]/div[3]/div[1]/ul[1]/li[2]/a[1]").click()
+    context.driver.find_element(by=By.NAME,value="userId").send_keys(user)
+    context.driver.find_element(by=By.NAME,value="password").send_keys(pwd)
+
+@when(u'user click on login')
+def submitdetails(context):
+    context.driver.find_element(by=By.XPATH,value="//button[contains(text(),'Login')]").click()
+
+@then(u'user will verify the title of the page')
+def verifytitle(context):
+    print(context.driver.title)
+    context.driver.close()
