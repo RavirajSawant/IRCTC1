@@ -7,7 +7,6 @@ Feature: verify the login using data driven testing
     Then user will verify the title of the page
 
     Examples:
-      | user      |  | pwd       |
-      | ad        |  | ad        |
-      | shrinisen |  | Sr23ss23@ |
-      | jon       |  | jon       |
+      | user       |  | pwd        |
+      | shrinisen  |  | Sr23ss23@  |
+      | rajnish7kr |  | Kr7rajnish |

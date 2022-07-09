@@ -35,7 +35,6 @@ time.sleep(5)
 def step_impl(context):
     raise NotImplementedError(u'STEP: When user selects Hyderabad as a Origin')
 
-
 driver.find_element(By.ID, "stationFrom").send_keys("Hyd")
 driver.find_element(By.XPATH, "//body[1]/ul[1]/li[8]/div[1]").click()
 assert True, "Test Passeed"
@@ -47,6 +46,7 @@ time.sleep(5)
 def step_impl(context):
     raise NotImplementedError(u'STEP: When User user selects Pune as a Destination')
 driver.switch_to.default_content()
+
 driver.find_element(By.XPATH, "//input[@id='stationTo']").send_keys("pune")
 driver.find_element(By.XPATH, "//body[1]/ul[2]/li[7]/div[1]").click()
 assert True, "Test Passeed"
@@ -98,13 +98,22 @@ for flight in flight_names:
     print(flight.text)
     print("-------------------------------------------------------------------")
 assert True, "Test Passeed"
-
+time.sleep(5)
 # takes screenshots of avilable flights
 @then(u'User capture the result screenshot and save in the project folder')
 def step_impl(context):
     raise NotImplementedError(u'STEP: Then User capture the result screenshot and save in the project folder')
 time.sleep(10)
 driver.get_screenshot_as_file('flight1.png')
+time.sleep(3)
+driver.execute_script("window.scrollBy(0,750)", " ")
+time.sleep(3)
+driver.get_screenshot_as_file('flight2.png')
+time.sleep(3)
+driver.execute_script("window.scrollBy(750,1500)", " ")
+time.sleep(3)
+driver.get_screenshot_as_file('flight3.png')
+
 assert True, "Test Passeed"
 
 #close driver
